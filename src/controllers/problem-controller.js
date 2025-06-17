@@ -1,11 +1,16 @@
 function addProblem(req, res){
-
+    return res.status(501).json({
+        message: "Not implemented"
+    })
 
 };
 
 
 function getProblem(req, res){
 
+    return res.status(501).json({
+        message: "Not implemented"
+    })
     
 
 };
@@ -13,8 +18,8 @@ function getProblem(req, res){
 
 function getProblems(req, res){
 
-    return res.status(200).json({
-        message: "API is working fine"
+    return res.status(501).json({
+        message: "Not implemented"
     })
 
 };
@@ -22,12 +27,16 @@ function getProblems(req, res){
 
 function deleteProblem(req, res){
 
-
+return res.status(501).json({
+        message: "Not implemented"
+    })
 };
 
 
 function updateProblem(req, res){
-
+    return res.status(501).json({
+        message: "Not implemented"
+    })
 
 
 };
