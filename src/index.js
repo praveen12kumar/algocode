@@ -20,7 +20,10 @@ app.get('/ping', (req, res)=>{
     })
 })
 
+
 // last middleware if any error occurs
+// It is an errorHandler middleware because it have 4 parameters and it should
+// not be mentioned in between the request-response life cycle, it should be at the end of the req-res cycle
 app.use(errorHandler);
 
 

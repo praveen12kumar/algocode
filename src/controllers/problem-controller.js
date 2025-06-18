@@ -1,5 +1,5 @@
 import {StatusCodes} from 'http-status-codes'
-import { NotImplemented } from '../errors/NotImplement.error.js'
+import { NotImplemented } from '../errors/NotImplement.error.js';
 
 
 
