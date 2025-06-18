@@ -17,7 +17,7 @@ function sanitizeMarkdown(markdownContent) {
     //2. Sanitize the HTML
 
     const sanitizedHtml = sanitizeHtml(convertedHtml, {
-        allowedTags: sanitizeHtml.defaults.allowedTags
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
     })
 
     //console.log("sanitizedHtml",sanitizedHtml);

@@ -16,8 +16,6 @@ class ProblemService{
     }
 
     async createProblem(problemData){
-
-        try {
         
         // we are storing problem in markdown also which can contain html
         // and script tag so it may contain some malicious code and we have to sanitize it
@@ -27,13 +25,21 @@ class ProblemService{
         const problem = await this.problemRepository.createProblem(problemData);
 
         return problem;
-        } 
-        catch (error) {
-            console.log(error);
-            throw error;
-        }
-
     }
+
+    // get all problems
+
+    async getAllProblems(){
+            const problems = await this.problemRepository.getAllProblems();
+            return problems;
+    }
+
+    async getProblem(problemId){
+        const response = await this.problemRepository.getProblem(problemId);
+        return response;
+    }
+
+
 
 };
 
