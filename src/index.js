@@ -2,7 +2,7 @@ import express from 'express';
 import {PORT} from "./config/server-config.js";
 import bodyParser from 'body-parser';
 import apiRouter from "./routes/index.js"
-
+import { errorHandler } from './utils/errorHandler.js';
 
 const app = express();
 
@@ -19,6 +19,13 @@ app.get('/ping', (req, res)=>{
         message: "Problem service is alive"
     })
 })
+
+
+// last middleware if any error occurs
+// It is an errorHandler middleware because it have 4 parameters and it should
+// not be mentioned in between the request-response life cycle, it should be at the end of the req-res cycle
+app.use(errorHandler);
+
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on port: ${PORT}`);

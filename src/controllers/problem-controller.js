@@ -1,12 +1,16 @@
 import {StatusCodes} from 'http-status-codes'
+import { NotImplemented } from '../errors/NotImplement.error.js';
 
 
 
-function addProblem(req, res){
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message: "Not implemented"
-    })
+function addProblem(req, res, next){
+    try {
 
+        // nothing Implemented
+        throw new NotImplemented('add problem');
+    } catch (error) {
+        next(error)
+    }
 };
 
 
