@@ -47,6 +47,15 @@ class ProblemService{
     }
 
 
+    // update problem
+
+    async updateProblem(problemId, problemData){
+        const response = await this.problemRepository.updateProblem(problemId, problemData);
+        return response;
+    }
+
+
+    
 };
 
 export default ProblemService;

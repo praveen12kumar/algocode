@@ -57,6 +57,21 @@ class ProblemRepository {
         }
     }
 
+
+    async updateProblem(problemId, problemData){
+        try {
+            const problem = await Problem.findByIdAndUpdate(problemId, problemData, {new: true});
+            if(!problem){
+                throw new NotFound("Problem", problemId);
+            }
+            return problem;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+
+
 }
 
 export default ProblemRepository;
