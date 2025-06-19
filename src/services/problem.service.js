@@ -39,6 +39,12 @@ class ProblemService{
         return response;
     }
 
+    // delete problem
+
+    async deleteProblem(problemId){
+        const response = await this.problemRepository.deleteProblem(problemId);
+        return response;
+    }
 
 
 };

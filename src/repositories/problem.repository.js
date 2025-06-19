@@ -1,3 +1,4 @@
+import { deleteProblem } from "../controllers/problem-controller.js";
 import { NotFound } from "../errors/notFound.error.js";
 import { Problem } from "../models/index.js";
 
@@ -41,6 +42,20 @@ class ProblemRepository {
             throw error;
         }
     } 
+
+
+    async deleteProblem(problemId){
+        try {
+            const problem = await Problem.findByIdAndDelete(problemId);
+            if(!problem){
+                throw new NotFound("Problem", problemId);
+            }
+            return problem;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
 
 }
 
