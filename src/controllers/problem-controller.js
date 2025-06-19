@@ -1,8 +1,6 @@
 import {StatusCodes} from 'http-status-codes'
-import { NotImplemented } from '../errors/NotImplement.error.js';
 import {ProblemService} from "../services/index.js";
 import {ProblemRepository} from "../repositories/index.js";
-import {NotFound} from "../errors/notFound.error.js";
 
 
 const problemService = new ProblemService(new ProblemRepository());
@@ -28,19 +26,17 @@ async function addProblem(req, res, next){
 
 async function getProblem(req, res){
 
-    const {id} = req.params;
-    
-    const response = await problemService.getProblem(id);
-    
-    return res.status(StatusCodes.OK).json({
-        success: true,
-        message: "Problem fetched successfully",
-        error: null,
-        data: response
-    })
-    
-    
-
+    try {
+        const response = await problemService.getProblem(req.params.id);
+        return res.status(StatusCodes.OK).json({
+            success: true,
+            message: "Problem fetched successfully",
+            error: null,
+            data: response
+        })
+    } catch (error) {
+        next(error);
+    }
 };
 
 
@@ -77,7 +73,7 @@ async function deleteProblem(req, res, next){
 };
 
 
-async function updateProblem(req, res){
+async function updateProblem(req, res, next){
     try {
         const response = await problemService.updateProblem(req.params.id, req.body);
         //console.log("response",response);
@@ -89,6 +85,7 @@ async function updateProblem(req, res){
         })
 
     } catch (error) {
+        console.log(error);
         next(error);
     }
 };

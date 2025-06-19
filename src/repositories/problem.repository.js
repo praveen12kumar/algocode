@@ -1,4 +1,5 @@
-import { deleteProblem } from "../controllers/problem-controller.js";
+import logger from "../config/logger.config.js";
+import { BadRequest } from "../errors/badRequest.error.js";
 import { NotFound } from "../errors/notFound.error.js";
 import { Problem } from "../models/index.js";
 
@@ -61,7 +62,9 @@ class ProblemRepository {
     async updateProblem(problemId, problemData){
         try {
             const problem = await Problem.findByIdAndUpdate(problemId, problemData, {new: true});
+            
             if(!problem){
+                logger.error( `problem with id: ${problemId} not found in the db`);
                 throw new NotFound("Problem", problemId);
             }
             return problem;
