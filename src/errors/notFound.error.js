@@ -3,8 +3,12 @@ import { StatusCodes } from "http-status-codes";
 
 class NotFound extends BaseError{
 
-    constructor(message, error){
-        super("Not Found", StatusCodes.NOT_FOUND, `${message} Not Found`, {});
+    constructor(resourceName, resourcevalue){
+        super("Not Found", StatusCodes.NOT_FOUND, `The requested ${resourceName} with value ${resourcevalue} not found`,
+             {
+                resourceName,
+                resourcevalue
+             });
     }
 };
 
